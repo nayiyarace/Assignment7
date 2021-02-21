@@ -57,7 +57,7 @@ fdata = fData(mp)
 ```{r}
 dist1 = dist(t(edata))
 hclust1 = hclust(dist1)
-plot(hclust1, hang = -1)
+plot(hclust1, hang = -1, labels=FALSE)
 ```   
 
 2. After filtering all genes with rowMeans less than 100
@@ -67,7 +67,7 @@ table(low_genes)
 filtered_edata = filter(edata, !low_genes)
 f_dist1 = dist(t(filtered_edata))
 f_hclust1 = hclust(f_dist1)
-plot(f_hclust1, hang = -1)
+plot(f_hclust1, hang = -1, labels=FALSE)
 ```   
 
 3. After taking the log2 transform of the data without filtering Color the samples by which study they came from
@@ -75,7 +75,7 @@ plot(f_hclust1, hang = -1)
 log_edata = log2(edata + 1)
 l_dist1 = dist(t(log_edata))
 l_hclust1 = hclust(l_dist1)
-plot(l_hclust1, hang = -1)
+plot(l_hclust1, hang = -1, labels=FALSE)
 ```
 
 Clustering with or without filtering is about the same. Clustering after the log2 transform shows better clustering with respect to the study variable. The likely reason is that the highly skewed distribution doesn't match the Euclidean distance metric being used in the clustering example.
