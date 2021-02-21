@@ -1,13 +1,8 @@
 # Assignment 7 (quizz number 7-10)
 ## Iyarace Khampakdee
-*The quizzes use functions from Biobase. This is the code for installing the package*
-```{r}
-if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
+*The quizzes use functions from Biobase (you have to install the Biobase package first).*
 
-BiocManager::install("Biobase")
-```
-*7. Load the Bottomly data:*
+*7. Which of the following code chunks will make a heatmap of the 500 most highly expressed genes (as defined by total count), without re-ordering due to clustering? Are the highly expressed samples next to each other in sample order?*
 ```{r}
 con =url("http://bowtie-bio.sourceforge.net/recount/ExpressionSets/bodymap_eset.RData")
 load(file=con)
@@ -16,7 +11,7 @@ bm = bodymap.eset
 edata = Biobase::exprs(bm)
 
 ```
-*Answer*
+*answer*
 ```{r}
 row_sums = rowSums(edata)
 edata = edata[order(-row_sums),]
@@ -26,7 +21,12 @@ heatmap(edata[index,],Rowv=NA,Colv=NA)
 
 *8. *
 ```{r}
-123
+con =url("http://bowtie-bio.sourceforge.net/recount/ExpressionSets/bodymap_eset.RData")
+load(file=con)
+close(con)
+bm = bodymap.eset
+pdata = Biobase::pData(bm)
+edata = Biobase::exprs(bm)
 ```
 
 *9. *
