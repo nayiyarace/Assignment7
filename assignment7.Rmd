@@ -1,0 +1,38 @@
+# Assignment 7 (quizz number 7-10)
+## Iyarace Khampakdee
+*The quizzes use functions from Biobase. This is the code for installing the package*
+```{r}
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install("Biobase")
+```
+*7. Load the Bottomly data:*
+```{r}
+con =url("http://bowtie-bio.sourceforge.net/recount/ExpressionSets/bodymap_eset.RData")
+load(file=con)
+close(con)
+bm = bodymap.eset
+edata = Biobase::exprs(bm)
+
+```
+*Answer*
+```{r}
+row_sums = rowSums(edata)
+edata = edata[order(-row_sums),]
+index = 1:500
+heatmap(edata[index,],Rowv=NA,Colv=NA)
+```
+
+*8. *
+```{r}
+123
+```
+
+*9. *
+```{r}
+```
+
+*10. *
+```{r}
+```
